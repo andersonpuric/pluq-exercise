@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 
 @Data
 @AllArgsConstructor
@@ -21,6 +23,6 @@ public class EnergyPrice {
     private String price;
     private String currency;
     private String unit;
-    private String date;
+    private LocalDate date;
     private String timeslot;
 }

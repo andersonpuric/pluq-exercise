@@ -2,10 +2,9 @@ package com.pluq.pluqexercise.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pluq.pluqexercise.model.EnergyPrice;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.pluq.pluqexercise.model.Location;
 import com.pluq.pluqexercise.repository.LocationRepository;
-import com.pluq.pluqexercise.utils.JsonFileParser;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -34,7 +33,19 @@ public class LocationService {
     }
 
     public Iterable<Location> saveAll() {
-        List<Location> locations = JsonFileParser.retrieveJsonData("/locations.json");
-        return repository.saveAll(locations);
+        /*
+            In this part, I mapped the contents of the json file just to save all at once in the database.
+            I made this way to gain some time.
+            In a real application, I wouldn't do this, I would search a better way
+         */
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        TypeReference<List<Location>> typeReference = new TypeReference<>() { };
+        try (InputStream inputStream = TypeReference.class.getResourceAsStream("/locations.json")) {
+            List<Location> locations = objectMapper.readValue(inputStream, typeReference);
+            return repository.saveAll(locations);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -13,6 +13,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,8 +33,8 @@ public class TestEnergyPriceController {
     @Test
     public void saveAllData() throws Exception {
         List<EnergyPrice> prices = Arrays.asList(
-                new EnergyPrice("2023-07-01-0", "NL", "2,264.2", "4,775.9", "101.56", "€", "MWh", "2023-07-01","0"),
-                new EnergyPrice("2023-07-01-1", "NL", "2,264.3", "5,778.9", "102.57", "€", "MWh", "2023-07-03","1")
+                new EnergyPrice("2023-07-01-0", "NL", "2,264.2", "4,775.9", "101.56", "€", "MWh", LocalDate.parse("2023-07-01"),"0"),
+                new EnergyPrice("2023-07-01-1", "NL", "2,264.3", "5,778.9", "102.57", "€", "MWh", LocalDate.parse("2023-07-03"),"1")
         );
 
         given(service.saveAll()).willReturn(prices);

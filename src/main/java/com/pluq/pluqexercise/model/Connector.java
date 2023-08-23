@@ -1,5 +1,6 @@
 package com.pluq.pluqexercise.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,9 +17,12 @@ public class Connector {
     private Long id;
     private String standard;
     private String format;
+    @JsonProperty("power_type")
     private String powerType;
     private String voltage;
     private String amperage;
-    private LocalDateTime lastUpdated;
+    @JsonProperty("last_updated")
+    private String lastUpdated;
+    @JsonProperty("tariff_id")
     private String tafiffId;
 }
