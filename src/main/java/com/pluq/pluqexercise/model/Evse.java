@@ -16,6 +16,8 @@ import java.util.List;
 public class Evse {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String uid;
     @JsonProperty("evse_id")
     private String evseId;
