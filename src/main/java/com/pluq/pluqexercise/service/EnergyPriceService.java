@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pluq.pluqexercise.model.EnergyPrice;
 import com.pluq.pluqexercise.repository.EnergyPriceRepository;
+import com.pluq.pluqexercise.utils.JsonFileParser;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -32,19 +33,7 @@ public class EnergyPriceService {
     }
 
     public Iterable<EnergyPrice> saveAll() {
-        /*
-            In this part, I mapped the contents of the json file just to save all at once in the database.
-            I made this way to gain some time.
-            In a real application, I wouldn't do this
-         */
-        ObjectMapper objectMapper = new ObjectMapper();
-        TypeReference<List<EnergyPrice>> typeReference = new TypeReference<>() {
-        };
-        try (InputStream inputStream = TypeReference.class.getResourceAsStream("/energyPrices.json")) {
-            List<EnergyPrice> energyPrices = objectMapper.readValue(inputStream, typeReference);
-            return energyPriceRepository.saveAll(energyPrices);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        List<EnergyPrice> energyPrices = JsonFileParser.retrieveJsonData("/energyPrices.json");
+        return energyPriceRepository.saveAll(energyPrices);
     }
 }
