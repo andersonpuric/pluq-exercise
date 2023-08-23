@@ -23,7 +23,7 @@ public class EnergyPriceService {
         return energyPriceRepository.findAll();
     }
 
-    public EnergyPrice getById(Long id) {
+    public EnergyPrice getById(String id) {
         return energyPriceRepository.findById(id)
                 .orElseThrow(EntityNotFoundException::new);
     }

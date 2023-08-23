@@ -19,7 +19,7 @@ public class EnergyPriceController {
     }
 
     @GetMapping("/{id}")
-    public EnergyPrice getById(@PathVariable Long id) {
+    public EnergyPrice getById(@PathVariable String id) {
         return energyPriceService.getById(id);
     }
 
