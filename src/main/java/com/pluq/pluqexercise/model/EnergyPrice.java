@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class EnergyPrice {
 
     @Id
-    private Long id;
+    private String id;
     private String country;
     private String buyVolume;
     private String sellVolume;
