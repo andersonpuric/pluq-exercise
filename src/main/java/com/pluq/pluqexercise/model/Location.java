@@ -26,7 +26,7 @@ public class Location {
     private Coordinate coordinates;
     private Boolean chargeWhenClosed;
     private LocalDateTime lastUpdate;
-    @Embedded
+    @ElementCollection
     private List<Evse> evses;
 
 }

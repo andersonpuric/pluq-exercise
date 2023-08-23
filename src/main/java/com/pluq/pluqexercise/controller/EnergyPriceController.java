@@ -23,13 +23,13 @@ public class EnergyPriceController {
         return energyPriceService.getById(id);
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public EnergyPrice save(@RequestBody EnergyPrice energyPrice) {
         return energyPriceService.save(energyPrice);
     }
 
-    @PostMapping
-    public Iterable<EnergyPrice> saveAll() {
+    @PostMapping("/save-all")
+    public Iterable<EnergyPrice> saveAllData() {
         return energyPriceService.saveAll();
     }
 }
