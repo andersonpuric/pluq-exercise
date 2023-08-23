@@ -1,5 +1,6 @@
 package com.pluq.pluqexercise.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pluq.pluqexercise.model.EnergyPrice;
 import com.pluq.pluqexercise.service.EnergyPriceService;
 import org.junit.jupiter.api.Test;
@@ -39,7 +40,7 @@ public class TestEnergyPriceController {
 
         mockMvc.perform(MockMvcRequestBuilders
                     .post("/save-all")
-                    .content(String.valueOf(prices))
+                    .content(new ObjectMapper().writeValueAsString(prices))
                     .contentType(MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
