@@ -36,7 +36,9 @@ public class MeterValueService {
         /*
             In this part, I mapped the contents of the json file just to save all at once in the database.
             I made this way to gain some time.
-            In a real application, I wouldn't do this, I would search a better way
+            In a real application, I wouldn't do this, I would search a better way.
+
+            I also struggled in this part, to map the json file, because of the array that starts as one object.
          */
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
