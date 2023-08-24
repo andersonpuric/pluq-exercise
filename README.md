@@ -10,8 +10,8 @@ I decided to create a model layer, a controller layer, a service layer and a rep
 
 #### Some points:
 * The api for the energy prices and the locations are working, they have 4 operations: list, get by id, save a single location and save all locations in the json file.
-* In the controllers, I could have used a ResponseEntity but I opted out for now, for simplicity. 
+* In the controllers, I could have used a ResponseEntity, but I opted out for now, for simplicity. 
 On a real application I would probably use it.
-* I struggled in the parsing of the meterValues.json, therefore the api is not working properly.
+* I struggled in the parsing of the meterValues.json, therefore this part of the api is not working properly.
 * Test coverage could have been better, but I was losing time trying to figure out good ways to test all the layers.
 * What I did to save all information from the json file into the DB is a bit hacky, I did that way to be fast and not lose much time. (It's commented in the service files)
