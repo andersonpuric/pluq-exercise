@@ -4,8 +4,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.pluq.pluqexercise.model.Location;
+import com.pluq.pluqexercise.model.Report;
 import com.pluq.pluqexercise.repository.LocationRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jdk.jshell.spi.ExecutionControl;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -47,5 +49,9 @@ public class LocationService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public Report getReport() {
+        throw new UnsupportedOperationException("Method not implemented");
     }
 }

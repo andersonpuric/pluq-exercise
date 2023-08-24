@@ -1,6 +1,7 @@
 package com.pluq.pluqexercise.controller;
 
 import com.pluq.pluqexercise.model.Location;
+import com.pluq.pluqexercise.model.Report;
 import com.pluq.pluqexercise.service.LocationService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,11 @@ public class LocationController {
     @GetMapping("/{id}")
     public Location findById(@PathVariable Long id) {
         return locationService.findById(id);
+    }
+
+    @GetMapping("/report")
+    public Report getReport() {
+        return locationService.getReport();
     }
 
     @PostMapping("/save")

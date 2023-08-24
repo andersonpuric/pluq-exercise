@@ -15,3 +15,4 @@ On a real application I would probably use it.
 * I struggled in the parsing of the meterValues.json, therefore this part of the api is not working properly.
 * Test coverage could have been better, but I was losing time trying to figure out good ways to test all the layers.
 * What I did to save all information from the json file into the DB is a bit hacky, I did that way to be fast and not lose much time. (It's commented in the service files)
+* I would start to model a Report model, to get the answer from the report call in the Locations API, but I didn't have time to finish it.
